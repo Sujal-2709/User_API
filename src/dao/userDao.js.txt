@@ -1,0 +1,22 @@
+const User = require('../models/userModel');
+
+exports.findAll = async () => {
+  return await User.find({ deleted: false });
+};
+
+exports.findById = async (userId) => {
+  return await User.findOne({ _id: userId, deleted: false });
+};
+
+exports.create = async (userData) => {
+  const user = new User(userData);
+  return await user.save();
+};
+
+exports.update = async (userId, userData) => {
+  return await User.findByIdAndUpdate(userId, userData, { new: true, runValidators: true });
+};
+
+exports.softDelete = async (userId) => {
+  return await User.findByIdAndUpdate(userId, { deleted: true }, { new: true });
+};

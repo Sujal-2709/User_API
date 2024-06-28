@@ -1,0 +1,10 @@
+const basicAuth = require('express-basic-auth');
+
+const users = {
+  'admin': 'password'
+};
+
+module.exports = basicAuth({
+  users: users,
+  challenge: true
+});

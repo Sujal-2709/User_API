@@ -1,0 +1,21 @@
+const userDao = require('../dao/userDao');
+
+exports.listUsers = async () => {
+  return await userDao.findAll();
+};
+
+exports.getUserById = async (userId) => {
+  return await userDao.findById(userId);
+};
+
+exports.createUser = async (userData) => {
+  return await userDao.create(userData);
+};
+
+exports.updateUser = async (userId, userData) => {
+  return await userDao.update(userId, userData);
+};
+
+exports.deleteUser = async (userId) => {
+  return await userDao.softDelete(userId);
+};
